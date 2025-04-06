@@ -9,7 +9,7 @@ import {
 import { MDXProvider } from "@mdx-js/react";
 
 import type { Route } from "./+types/root";
-// import "./app.css";
+import "./app.css";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
