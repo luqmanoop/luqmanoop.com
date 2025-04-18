@@ -9,7 +9,9 @@ import {
 import { MDXProvider } from "@mdx-js/react";
 
 import type { Route } from "./+types/root";
+import NavBar from "~/components/NavBar";
 import "./app.css";
+import Footer from "./components/Footer";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -33,8 +35,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+      <body className="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-white dark:bg-slate-950">
+        <NavBar />
+        <main className="max-w-3xl mx-auto py-6 md:py-12 px-6 min-h-screen">
+          {children}
+        </main>
+        <Footer />
         <ScrollRestoration />
         <Scripts />
       </body>

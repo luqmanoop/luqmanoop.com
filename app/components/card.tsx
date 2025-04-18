@@ -1,6 +1,4 @@
-import { Card, CardContent } from "./ui/card";
-
-const CreatingCard = ({
+const Card = ({
   title,
   description,
   link,
@@ -12,8 +10,8 @@ const CreatingCard = ({
   badge: string[];
 }) => {
   return (
-    <Card>
-      <CardContent className="flex flex-col gap-2 items-start">
+    <div className="border border-gray-200 dark:border-gray-800 rounded-lg p-4 shadow">
+      <div className="flex flex-col gap-2 items-start">
         <h3 className="font-semibold">
           <a
             href={link}
@@ -24,17 +22,22 @@ const CreatingCard = ({
             {title}
           </a>
         </h3>
-        <p className="text-gray-600 text-sm">{description}</p>
+        <p className="text-sm">
+          {description}
+        </p>
         <div className="flex flex-wrap gap-2">
           {badge.map((badge) => (
-            <span className="text-xs bg-gray-200 px-2 py-1 rounded-full">
+            <span
+              key={badge}
+              className="text-xs bg-gray-200 dark:bg-slate-800 px-2 py-1 rounded-full"
+            >
               {badge}
             </span>
           ))}
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 };
 
-export default CreatingCard;
+export default Card;
