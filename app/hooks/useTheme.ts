@@ -5,7 +5,9 @@ export const useTheme = () => {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    setTheme(mediaQuery.matches ? "dark" : "light");
+    setTheme(
+      mediaQuery.matches || localStorage.theme === "dark" ? "dark" : "light"
+    );
 
     const handleChange = (event: MediaQueryListEvent) => {
       setTheme(event.matches ? "dark" : "light");
