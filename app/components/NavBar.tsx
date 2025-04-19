@@ -59,7 +59,7 @@ export const NavBar = () => {
                 />
               </NavLink>
             </div>
-            <div className="space-x-6 hidden md:flex font-medium px-12 py-4">
+            <div className="space-x-10 hidden md:flex font-medium px-12 py-4">
               {pagesLinks.map((link) => (
                 <Link
                   key={link.to}
