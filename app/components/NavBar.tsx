@@ -2,6 +2,8 @@ import { Menu } from "lucide-react";
 import { useState } from "react";
 import { NavLink } from "react-router";
 
+import { ThemeToggle } from "./ThemeToggle";
+
 const Link = ({
   to,
   label,
@@ -59,7 +61,7 @@ export const NavBar = () => {
                 />
               </NavLink>
             </div>
-            <div className="space-x-10 hidden md:flex font-medium px-12 py-4">
+            <div className="space-x-8 hidden md:flex font-medium px-12 py-4 items-center">
               {pagesLinks.map((link) => (
                 <Link
                   key={link.to}
@@ -68,9 +70,13 @@ export const NavBar = () => {
                   onClick={() => setMenuOpen(false)}
                 />
               ))}
+
+              <ThemeToggle />
             </div>
 
-            <div className="md:hidden">
+            <div className="md:hidden flex items-center gap-2">
+              <ThemeToggle />
+
               <button
                 role="button"
                 aria-label="Toggle menu"
