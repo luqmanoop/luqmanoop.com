@@ -6,8 +6,14 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+#permalink {
+  @apply no-underline;
+}
+
 html,
 body {
+  scroll-behavior: smooth;
+
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }

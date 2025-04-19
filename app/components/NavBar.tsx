@@ -18,9 +18,9 @@ const Link = ({
       className={({ isActive }) =>
         [
           isActive
-            ? "underline underline-offset-[6px] decoration-2 decoration-orange-500"
-            : "",
-          " dark:hover:text-gray-400 px-2",
+            ? "underline underline-offset-[8px] decoration-2 decoration-orange-500"
+            : "relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-orange-500 after:transition-all after:duration-300 hover:after:w-full",
+          " dark:hover:text-gray-400",
         ].join(" ")
       }
       onClick={onClick}
@@ -37,7 +37,7 @@ const pagesLinks = [
   { to: "/about", label: "About" },
 ];
 
-export default function NavBar() {
+export const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -49,13 +49,13 @@ export default function NavBar() {
               <NavLink to="/" viewTransition className="font-bold">
                 <img
                   src="/assets/logo-light.png"
-                  className="w-1/4 md:w-24 dark:hidden"
+                  className="w-1/4 md:w-[5.4rem] dark:hidden"
                   alt="luqmanoop logo"
                 />
                 <img
                   src="/assets/logo-dark.png"
                   alt="luqmanoop logo"
-                  className="w-1/4 md:w-24 hidden dark:block"
+                  className="w-1/4 md:w-[5.4rem] hidden dark:block"
                 />
               </NavLink>
             </div>
@@ -101,4 +101,4 @@ export default function NavBar() {
       </nav>
     </header>
   );
-}
+};

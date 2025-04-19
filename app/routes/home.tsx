@@ -25,7 +25,7 @@ export default function HomePage() {
         </h1>
         <p className="text-shadow text-gray-900 dark:text-gray-500">
           Software Engineer,{" "}
-          <span className="underline decoration-wavy" title="🤞🏼">
+          <span className="underline decoration-wavy underline-offset-2" title="🤞🏼">
             <a
               href="https://youtube.com/@luqmanoop"
               target="_blank"

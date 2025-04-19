@@ -9,9 +9,8 @@ import {
 import { MDXProvider } from "@mdx-js/react";
 
 import type { Route } from "./+types/root";
-import NavBar from "~/components/NavBar";
+import { PermaLinkHeadings, Footer, NavBar } from "./components";
 import "./app.css";
-import Footer from "./components/Footer";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -50,7 +49,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <MDXProvider>
+    <MDXProvider components={PermaLinkHeadings}>
       <Outlet />
     </MDXProvider>
   );
