@@ -1,34 +1,26 @@
 import { useEffect, useState } from "react";
 
+type Theme = "light" | "dark";
+
+const isServer = typeof window === "undefined";
+
 export const useTheme = () => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<Theme>(isServer ? "light" : (localStorage.theme as Theme));
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    setTheme(
-      mediaQuery.matches || localStorage.theme === "dark" ? "dark" : "light"
-    );
-
-    const handleChange = (event: MediaQueryListEvent) => {
-      setTheme(event.matches ? "dark" : "light");
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-
-    return () => {
-      mediaQuery.removeEventListener("change", handleChange);
-    };
+    if (localStorage.theme && localStorage.theme !== theme) {
+      setTheme(localStorage.theme as Theme);
+    }
   }, []);
 
   useEffect(() => {
-    document.documentElement.classList.toggle(
-      "dark",
-      localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-    );
-
-    localStorage.theme = theme;
+    if (theme === "dark") {
+      localStorage.theme = "dark";
+      document.documentElement.classList.toggle("dark", true);
+    } else {
+      localStorage.theme = "light";
+      document.documentElement.classList.toggle("dark", false);
+    }
   }, [theme]);
 
   return { theme, setTheme };
