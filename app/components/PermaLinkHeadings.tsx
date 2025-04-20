@@ -7,7 +7,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const Heading = ({ level, children }: Props) => {
+const Heading = ({ level, children }: Props) => {
   const Tag = `h${level}` as const;
   const id = slugify(children?.toString() || "", { lower: true, remove: /[*+~.()'"!:@]/g });
 

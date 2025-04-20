@@ -1,0 +1,10 @@
+{
+  "project": ["app/**"],
+  "ignoreDependencies": [
+    "@react-router/.+",
+    "@tailwindcss/typography",
+    "react-router-devtools",
+    "isbot",
+    "tailwindcss"
+  ]
+}
