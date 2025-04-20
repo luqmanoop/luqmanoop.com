@@ -48,7 +48,7 @@ export const NavBar = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    if (navigation.state !== "loading") return;
+    if (navigation.state !== "idle") return;
 
     document.body.classList.remove("overflow-hidden");
     const navigationElement = document.getElementById("navigation");
@@ -65,17 +65,17 @@ export const NavBar = () => {
           <NavLink to="/" viewTransition>
             <img
               src="/assets/logo-light.png"
-              className="w-1/4 md:w-[5.4rem] dark:hidden"
+              className="w-1/3 md:w-[5.4rem] dark:hidden"
               alt="luqmanoop logo"
             />
             <img
               src="/assets/logo-dark.png"
               alt="luqmanoop logo"
-              className="w-1/4 md:w-[5.4rem] hidden dark:block"
+              className="w-1/3 md:w-[5.4rem] hidden dark:block"
             />
           </NavLink>
 
-          <div className="md:hidden flex items-center gap-4 md:gap-2">
+          <div className="md:hidden flex items-center gap-3 md:gap-2">
             <ThemeToggle />
 
             <button
@@ -84,7 +84,7 @@ export const NavBar = () => {
               onClick={() => onToggleNavigation()}
               className="p-2 focus:ring-gray-300 focus:ring-4 focus:outline-none rounded-md focus:dark:ring-gray-700"
             >
-              <Menu className="h-6 w-6" />
+              <Menu className="h-7 w-7" />
             </button>
           </div>
         </div>
