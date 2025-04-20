@@ -1,6 +1,5 @@
 import { Menu } from "lucide-react";
-import { useEffect, useState } from "react";
-import { NavLink, useNavigation } from "react-router";
+import { NavLink } from "react-router";
 
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -45,24 +44,22 @@ export const NavBar = () => {
     document.getElementById("navigation")?.classList.toggle("hidden");
   };
 
-  const navigation = useNavigation();
-
-  useEffect(() => {
-    if (navigation.state !== "idle") return;
-
+  const handleNavigationItemClick = () => {
     document.body.classList.remove("overflow-hidden");
     const navigationElement = document.getElementById("navigation");
-    
-    if (!navigationElement || navigationElement.classList.contains("hidden")) return;
-    
+
+    if (!navigationElement || navigationElement.classList.contains("hidden")) {
+      return;
+    }
+
     navigationElement.classList.add("hidden");
-  }, [navigation.state]);
+  };
 
   return (
     <header className="sticky top-0 z-50 shadow dark:shadow-none dark:border-b dark:border-slate-900 bg-white dark:bg-slate-950">
       <div className="flex flex-col md:flex-row max-w-6xl md:px-6 md:py-4 mx-auto">
         <div className="flex-1 flex justify-center items-center md:justify-start shadow md:shadow-none px-6 py-3 md:p-0">
-          <NavLink to="/" viewTransition>
+          <NavLink to="/" viewTransition onClick={handleNavigationItemClick}>
             <img
               src="/assets/logo-light.png"
               className="w-1/3 md:w-[5.4rem] dark:hidden"
@@ -97,7 +94,11 @@ export const NavBar = () => {
           <ul className="md:space-x-8 space-y-8 md:space-y-0 px-6 py-6 md:p-0 md:flex font-medium md:items-center text-lg md:text-base">
             {pagesLinks.map((link) => (
               <li key={link.to} className="md:inline-flex">
-                <Link to={link.to} label={link.label} />
+                <Link
+                  to={link.to}
+                  label={link.label}
+                  onClick={handleNavigationItemClick}
+                />
               </li>
             ))}
 
