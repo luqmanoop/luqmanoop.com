@@ -21,7 +21,7 @@ const Link = ({
           isActive
             ? "underline underline-offset-[8px] decoration-2 decoration-orange-500"
             : "relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-orange-500 after:transition-all after:duration-300 hover:after:w-full",
-          " dark:hover:text-gray-400",
+          " dark:hover:text-gray-400 select-none",
         ].join(" ")
       }
       onClick={onClick}
@@ -58,31 +58,31 @@ export const NavBar = () => {
   return (
     <header className="sticky top-0 z-50 shadow dark:shadow-none dark:border-b dark:border-slate-900 bg-white dark:bg-slate-950">
       <div className="flex flex-col md:flex-row max-w-6xl md:px-6 md:py-4 mx-auto">
-        <div className="flex-1 flex justify-center items-center md:justify-start shadow md:shadow-none px-6 py-3 md:p-0">
-          <NavLink to="/" viewTransition onClick={handleNavigationItemClick}>
+        <div className="flex-1 grid grid-cols-[auto_1fr_auto] items-center md:flex md:justify-start shadow md:shadow-none p-4 md:p-0">
+          <button
+            role="button"
+            aria-label="Toggle menu"
+            onClick={() => onToggleNavigation()}
+            className="p-2 focus:ring-gray-300 focus:ring-4 focus:outline-none rounded-md focus:dark:ring-gray-700 md:hidden"
+          >
+            <Menu className="h-6 w-6" />
+          </button>
+
+          <NavLink to="/" viewTransition onClick={handleNavigationItemClick} className="flex justify-center">
             <img
               src="/assets/logo-light.png"
-              className="w-1/3 md:w-[5.4rem] dark:hidden"
+              className="w-[4.8rem] md:w-[5.4rem] dark:hidden"
               alt="luqmanoop logo"
             />
             <img
               src="/assets/logo-dark.png"
               alt="luqmanoop logo"
-              className="w-1/3 md:w-[5.4rem] hidden dark:block"
+              className="w-[4.8rem] md:w-[5.4rem] hidden dark:block"
             />
           </NavLink>
 
-          <div className="md:hidden flex items-center gap-3 md:gap-2">
+          <div className="md:hidden p-2">
             <ThemeToggle />
-
-            <button
-              role="button"
-              aria-label="Toggle menu"
-              onClick={() => onToggleNavigation()}
-              className="p-2 focus:ring-gray-300 focus:ring-4 focus:outline-none rounded-md focus:dark:ring-gray-700"
-            >
-              <Menu className="h-7 w-7" />
-            </button>
           </div>
         </div>
 
