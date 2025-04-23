@@ -36,9 +36,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-white dark:bg-slate-950">
         <NavBar />
-        <main className="max-w-3xl mx-auto py-6 md:py-12 px-6 min-h-screen">
-          {children}
-        </main>
+
+        {children}
+
         <Footer />
         <ScrollRestoration />
         <Scripts />

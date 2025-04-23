@@ -20,3 +20,7 @@ body {
     color-scheme: dark;
   }
 }
+
+.layout-default {
+  @apply py-6 md:py-12 px-6 min-h-screen mx-auto;
+}

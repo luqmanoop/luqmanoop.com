@@ -1,42 +1,56 @@
-const Card = ({
-  title,
-  description,
-  link,
-  badge,
-}: {
+import { Link } from "react-router";
+
+type CardProps = {
   title: string;
   description: string;
   link: string;
-  badge: string[];
-}) => {
+  image?: string;
+  tags?: string[];
+  size?: "medium" | "large";
+};
+
+const Card = (props: CardProps) => {
+  const { title, description, link, image, tags = [], size = "medium" } = props;
+
   return (
-    <div className="border border-gray-200 dark:border-gray-800 rounded-lg p-4 shadow">
-      <div className="flex flex-col gap-2 items-start">
-        <h3 className="font-semibold">
-          <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            {title}
-          </a>
+    <Link
+      to={link}
+      className="flex gap-1 border border-gray-100 rounded-lg p-3 md:p-6 bg-white dark:bg-black/20 sm:rounded-xl shadow-md dark:shadow-lg hover:shadow-xl dark:sm:hover:shadow-indigo-500/20 transition duration-500 dark:sm:border dark:border-slate-900"
+    >
+      {image && (
+        <img src={image} alt={title} className="w-24 h-24 relative -top-1 -left-1" />
+      )}
+
+      <div className="flex flex-col gap-2">
+        <h3
+          className={`font-bold text-ellipsis line-clamp-2 ${
+            size === "medium" ? "text-lg" : "text-2xl"
+          }`}
+        >
+          {title}
         </h3>
-        <p className="text-sm">
+        <p
+          className={`text-sm grow text-ellipsis line-clamp-2 ${
+            size === "medium" ? "text-sm" : "md:text-base"
+          }`}
+        >
           {description}
         </p>
-        <div className="flex flex-wrap gap-2">
-          {badge.map((badge) => (
-            <span
-              key={badge}
-              className="text-xs bg-gray-200 dark:bg-slate-800 px-2 py-1 rounded-full"
-            >
-              {badge}
-            </span>
-          ))}
-        </div>
+
+        {tags.length > 0 && (
+          <div className="flex items-stretch flex-wrap gap-2 mt-4">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-[0.66rem] bg-gray-200 dark:bg-slate-800 px-2 py-1 rounded-full"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
-    </div>
+    </Link>
   );
 };
 

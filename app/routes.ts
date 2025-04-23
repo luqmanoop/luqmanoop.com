@@ -17,6 +17,11 @@ const blogPosts = await globby("content/blog/*.mdx", {
   expandDirectories: true,
 });
 
+const apps = await globby("content/apps/*.mdx", {
+  cwd: import.meta.dirname,
+  expandDirectories: true,
+});
+
 export default [
   index("routes/home.tsx"),
 
@@ -29,11 +34,23 @@ export default [
   ...prefix("/blog", [
     layout("./layouts/blog.tsx", [
       index("content/blog/index.mdx"),
-      ...blogPosts.filter((post) => !post.includes("index.mdx")).map((post) =>
-        route(post.replace(/^content\/blog\//, "").replace(".mdx", ""), post)
-      ),
+      ...blogPosts
+        .filter((post) => !post.includes("index.mdx"))
+        .map((post) =>
+          route(post.replace(/^content\/blog\//, "").replace(".mdx", ""), post)
+        ),
     ]),
   ]),
 
-  ...prefix("/apps", [index("content/apps/index.mdx")]),
+  ...prefix("/apps", [
+    layout("./layouts/apps-layout.tsx", [index("content/apps/apps.tsx")]),
+
+    layout("./layouts/app.tsx", [
+      ...apps
+        .filter((app) => !app.includes("index.mdx"))
+        .map((app) =>
+          route(app.replace(/^content\/apps\//, "").replace(".mdx", ""), app)
+        ),
+    ]),
+  ]),
 ] satisfies RouteConfig;
