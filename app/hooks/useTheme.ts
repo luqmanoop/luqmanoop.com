@@ -5,7 +5,7 @@ type Theme = "light" | "dark";
 const isServer = typeof window === "undefined";
 
 export const useTheme = () => {
-  const [theme, setTheme] = useState<Theme>(isServer ? "light" : (localStorage.theme as Theme));
+  const [theme, setTheme] = useState<Theme>(isServer ? "dark" : (localStorage.theme as Theme));
 
   useEffect(() => {
     if (localStorage.theme && localStorage.theme !== theme) {
