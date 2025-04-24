@@ -52,7 +52,7 @@ export default function Apps() {
             key={app.title}
             title={app.title}
             description={app.description}
-            link="#"
+            link={`/apps/${app.slug}`}
             size="large"
             tags={app.tags}
             image={app.icon}
