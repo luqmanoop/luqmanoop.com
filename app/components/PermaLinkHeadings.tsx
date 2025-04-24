@@ -26,7 +26,7 @@ const Heading = ({ level, children }: Props) => {
   );
 };
 
-export const PermaLinkHeadings = {
+const PermaLinkHeadings = {
   h1: (props: any) => <Heading level={1} {...props} />,
   h2: (props: any) => <Heading level={2} {...props} />,
   h3: (props: any) => <Heading level={3} {...props} />,

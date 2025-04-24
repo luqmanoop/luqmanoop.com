@@ -5,21 +5,22 @@ import {
   layout,
   prefix,
 } from "@react-router/dev/routes";
-import { globby } from "globby";
+import { glob } from "glob";
 
-const pages = await globby("pages/*.mdx", {
+import { loadAppsToJsonFile } from "./utils/apps";
+
+await loadAppsToJsonFile();
+
+const pages = await glob("pages/*.mdx", {
   cwd: import.meta.dirname,
-  expandDirectories: true,
 });
 
-const blogPosts = await globby("content/blog/*.mdx", {
+const blogPosts = await glob("content/blog/*.mdx", {
   cwd: import.meta.dirname,
-  expandDirectories: true,
 });
 
-const apps = await globby("content/apps/*.mdx", {
+const apps = await glob("content/apps/*.mdx", {
   cwd: import.meta.dirname,
-  expandDirectories: true,
 });
 
 export default [

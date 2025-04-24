@@ -2,22 +2,17 @@ import { resolve } from "path";
 import { glob } from "glob";
 import { bundleMDX } from "mdx-bundler";
 import slugify from "slugify";
+import fs from "fs";
 
-type App = {
-  title: string;
-  description: string;
-  tags: string[];
-  slug: string;
-  icon: string;
-};
+import type { App } from "~/types";
 
-export const getApps = async (): Promise<App[]> => {
+const getAppsMdxFrontmatter = async (): Promise<App[]> => {
   const appsDir = resolve("./app/content/apps");
-  const appMdxFilepaths = await glob(resolve(appsDir, "**/*.mdx"));
+  const appsMdxFilepaths = await glob(resolve(appsDir, "**/*.mdx"));
 
   const apps: App[] = [];
 
-  for (const appMdxFilepath of appMdxFilepaths) {
+  for (const appMdxFilepath of appsMdxFilepaths) {
     const { frontmatter } = await bundleMDX<App>({
       file: appMdxFilepath,
       cwd: appsDir,
@@ -35,9 +30,11 @@ export const getApps = async (): Promise<App[]> => {
   return apps;
 };
 
-export const getFeaturedApps = async (): Promise<App[]> => {
-  const appsToFeature = ["x-mass-unfollow", "1loc-vscode"];
-  const apps = await getApps();
+export const loadAppsToJsonFile = async () => {
+  const apps = await getAppsMdxFrontmatter();
 
-  return apps.filter((app) => appsToFeature.includes(app.slug));
+  fs.writeFileSync(
+    resolve("./public/apps.json"),
+    JSON.stringify(apps, null, 2)
+  );
 };

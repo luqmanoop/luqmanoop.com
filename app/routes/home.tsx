@@ -1,7 +1,5 @@
-import { useLoaderData } from "react-router";
-
-import { getFeaturedApps } from "~/utils/apps";
 import { Card } from "~/components";
+import { useFeaturedApps } from "~/hooks/useFetchApps";
 
 export function meta() {
   return [
@@ -11,14 +9,8 @@ export function meta() {
   ];
 }
 
-export async function loader() {
-  return {
-    featuredApps: await getFeaturedApps(),
-  };
-}
-
 export default function HomePage() {
-  const { featuredApps } = useLoaderData<typeof loader>();
+  const { data: featuredApps } = useFeaturedApps();
 
   return (
     <main className="layout-default max-w-4xl">
@@ -56,7 +48,7 @@ export default function HomePage() {
           Featured
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {featuredApps.map((app) => (
+          {featuredApps?.map((app) => (
             <Card
               key={app.title}
               title={app.title}

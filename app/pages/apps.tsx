@@ -1,9 +1,8 @@
 import Typed from "typed.js";
 import { useEffect } from "react";
-import { useLoaderData } from "react-router";
 
 import { Card } from "~/components";
-import { getApps } from "~/utils/apps";
+import { useFetchApps } from "~/hooks/useFetchApps";
 
 export function meta() {
   return [
@@ -13,14 +12,9 @@ export function meta() {
   ];
 }
 
-export async function loader() {
-  return {
-    apps: await getApps(),
-  };
-}
-
 export default function Apps() {
-  const { apps } = useLoaderData<typeof loader>();
+  const { data: apps } = useFetchApps();
+
   useEffect(() => {
     const typed = new Typed("#typed", {
       strings: ["web", "desktop", "mobile"],
@@ -47,7 +41,7 @@ export default function Apps() {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 md:py-12 gap-8 md:gap-12">
-        {apps.map((app) => (
+        {apps?.map((app) => (
           <Card
             key={app.title}
             title={app.title}
