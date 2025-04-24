@@ -43,7 +43,7 @@ export default [
   ]),
 
   ...prefix("/apps", [
-    layout("./layouts/apps-layout.tsx", [index("content/apps/apps.tsx")]),
+    layout("./layouts/apps-layout.tsx", [index("pages/apps.tsx")]),
 
     layout("./layouts/app.tsx", [
       ...apps

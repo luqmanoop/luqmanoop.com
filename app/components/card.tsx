@@ -1,3 +1,4 @@
+import { useLocation } from "react-router";
 import { Link } from "react-router";
 
 type CardProps = {
@@ -15,6 +16,7 @@ const Card = (props: CardProps) => {
   return (
     <Link
       to={link}
+      viewTransition={link.startsWith("/")}
       className="flex gap-1 border border-gray-100 rounded-lg p-3 md:p-6 bg-white dark:bg-black/20 sm:rounded-xl shadow-md dark:shadow-lg hover:shadow-xl dark:sm:hover:shadow-indigo-500/20 transition duration-500 dark:sm:border dark:border-slate-900"
     >
       {image && (

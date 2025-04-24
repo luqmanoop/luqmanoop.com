@@ -1,25 +1,26 @@
 import Typed from "typed.js";
 import { useEffect } from "react";
-import { Card } from "~/components";
+import { useLoaderData } from "react-router";
 
-export const apps = [
-  {
-    title: "X Mass Unfollow",
-    description:
-      "Mass unfollow users on X (formerly Twitter) with a click of a button!",
-    tags: ["free", "chrome", "web", "extension"],
-    icon: "/assets/apps/x-mass-unfollow.png",
-  },
-  {
-    title: "1loc-vscode",
-    description:
-      "VSCode extension for common JavaScript utilities in one line of code!",
-    tags: ["free", "vscode", "extension"],
-    icon: "/assets/apps/1loc-vscode.png",
-  },
-];
+import { Card } from "~/components";
+import { getApps } from "~/utils/apps";
+
+export function meta() {
+  return [
+    {
+      title: "Apps — luqmanoop",
+    },
+  ];
+}
+
+export async function loader() {
+  return {
+    apps: await getApps(),
+  };
+}
 
 export default function Apps() {
+  const { apps } = useLoaderData<typeof loader>();
   useEffect(() => {
     const typed = new Typed("#typed", {
       strings: ["web", "desktop", "mobile"],

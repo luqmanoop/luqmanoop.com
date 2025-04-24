@@ -1,4 +1,7 @@
-import Card from "~/components/card";
+import { useLoaderData } from "react-router";
+
+import { getFeaturedApps } from "~/utils/apps";
+import { Card } from "~/components";
 
 export function meta() {
   return [
@@ -8,7 +11,15 @@ export function meta() {
   ];
 }
 
+export async function loader() {
+  return {
+    featuredApps: await getFeaturedApps(),
+  };
+}
+
 export default function HomePage() {
+  const { featuredApps } = useLoaderData<typeof loader>();
+
   return (
     <main className="layout-default max-w-4xl">
       <div className="flex flex-col items-center text-center space-y-2 py-6">
@@ -45,21 +56,16 @@ export default function HomePage() {
           Featured
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Card
-            title="X (Twitter) Mass Unfollow"
-            image="/assets/apps/x-mass-unfollow.png"
-            description="Elegantly mass unfollow users on X (formerly Twitter)"
-            link="https://chromewebstore.google.com/detail/x-twitter-mass-unfollow/bidolfkgmbnlnijabkjafdajjpocfhol"
-            tags={["free", "web", "extension"]}
-          />
-
-          <Card
-            title="1loc-vscode"
-            description="VSCode extension for common JavaScript utilities in one line of code!"
-            image="/assets/apps/1loc-vscode.png"
-            link="https://marketplace.visualstudio.com/items?itemName=codeshifu.1loc"
-            tags={["free", "vscode", "extension"]}
-          />
+          {featuredApps.map((app) => (
+            <Card
+              key={app.title}
+              title={app.title}
+              image={app.icon}
+              description={app.description}
+              link={`/apps/${app.slug}`}
+              tags={app.tags}
+            />
+          ))}
 
           <Card
             title="Youtube"
