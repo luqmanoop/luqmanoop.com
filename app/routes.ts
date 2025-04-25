@@ -7,19 +7,11 @@ import {
 } from "@react-router/dev/routes";
 import { glob } from "glob";
 
-import { loadAppsToJsonFile } from "./utils/apps";
-
-await loadAppsToJsonFile();
-
 const pages = await glob("pages/*.mdx", {
   cwd: import.meta.dirname,
 });
 
 const blogPosts = await glob("content/blog/*.mdx", {
-  cwd: import.meta.dirname,
-});
-
-const apps = await glob("content/apps/*.mdx", {
   cwd: import.meta.dirname,
 });
 

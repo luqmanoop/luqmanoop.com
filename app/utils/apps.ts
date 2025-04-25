@@ -1,40 +1,66 @@
-import { resolve } from "path";
 import { glob } from "glob";
 import { bundleMDX } from "mdx-bundler";
+import { basename, resolve } from "path";
+
 import slugify from "slugify";
-import fs from "fs";
+import type { App, Apps } from "~/types";
 
-import type { App, AppsData } from "~/types";
+import { SITE_NAME, SITE_URL } from "./constants";
 
-const getAppsMdxFrontmatter = async (): Promise<AppsData> => {
-  const appsDir = resolve("./app/content/apps");
-  const appsMdxFilepaths = await glob(resolve(appsDir, "**/*.mdx"));
+const appsDir = resolve("./app/content/apps");
 
-  const apps: AppsData = {};
+const getAppMdxBundle = async (filename: string) => {
+  const appMdxFilepath = resolve(appsDir, `${filename}.mdx`);
 
-  for (const appMdxFilepath of appsMdxFilepaths) {
-    const { frontmatter } = await bundleMDX<App>({
-      file: appMdxFilepath,
-      cwd: appsDir,
-    });
+  const { code, frontmatter } = await bundleMDX<App>({
+    file: appMdxFilepath,
+    cwd: appsDir,
+  });
 
-    const slug = slugify(frontmatter.title, { lower: true });
+  const slug = frontmatter.slug || slugify(basename(filename), { lower: true });
+  const icon = frontmatter.icon || `/assets/apps/${slug}.png`;
 
-    apps[slug] = {
+  return {
+    code,
+    frontmatter: {
       ...frontmatter,
-      icon: `/assets/apps/${slug}.png`,
       slug,
-    };
+      icon,
+      url: `${SITE_URL}/apps/${slug}`,
+      imageUrl: `${SITE_URL}${icon}`,
+    } as App,
+  };
+};
+
+export const fetchApps = async () => {
+  const apps = await glob(resolve(appsDir, "*.mdx"));
+
+  const appsData: Apps = [];
+
+  for (const app of apps) {
+    const filename = app.replace(".mdx", "");
+    const { frontmatter } = await getAppMdxBundle(filename);
+
+    appsData.push(frontmatter);
   }
 
-  return apps;
+  return appsData;
 };
 
-export const loadAppsToJsonFile = async () => {
-  const apps = await getAppsMdxFrontmatter();
+export const fetchApp = async (slug: string) => {
+  const { frontmatter, code } = await getAppMdxBundle(slug);
 
-  fs.writeFileSync(
-    resolve("./app/data/apps.json"),
-    JSON.stringify(apps, null, 2)
-  );
+  return {
+    frontmatter,
+    code,
+  };
 };
+
+export const getFeaturedApps = async () => {
+  const apps = await fetchApps();
+
+  const appsToFeature = ["x-mass-unfollow", "1loc-vscode"];
+
+  return apps.filter((app) => appsToFeature.includes(app.slug));
+};
+

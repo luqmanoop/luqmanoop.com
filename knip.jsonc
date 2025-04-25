@@ -20,5 +20,8 @@
       "react-router.config.{js,ts}",
       "vite.config.{js,mjs,ts,cjs,mts,cts}"
     ]
-  }
+  },
+  "ignore": [
+    "app/content/apps/**/*.mdx"
+  ]
 }

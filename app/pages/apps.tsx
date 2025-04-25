@@ -1,8 +1,18 @@
-import Typed from "typed.js";
 import { useEffect } from "react";
+import Typed from "typed.js";
 
 import { Card } from "~/components";
-import { useFetchApps } from "~/hooks/useFetchApps";
+
+import { fetchApps } from "~/utils/apps";
+import type { Route } from "./+types/apps";
+
+export async function loader() {
+  const apps = await fetchApps();
+
+  return {
+    apps,
+  };
+}
 
 export function meta() {
   return [
@@ -12,8 +22,8 @@ export function meta() {
   ];
 }
 
-export default function Apps() {
-  const { data: apps } = useFetchApps();
+export default function Apps({ loaderData }: Route.ComponentProps) {
+  const { apps } = loaderData;
 
   useEffect(() => {
     const typed = new Typed("#typed", {

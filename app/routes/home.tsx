@@ -1,5 +1,15 @@
 import { Card } from "~/components";
-import { useFeaturedApps } from "~/hooks/useFetchApps";
+import { getFeaturedApps } from "~/utils/apps";
+
+import type { Route } from "./+types/home";
+
+export async function loader() {
+  const featuredApps = await getFeaturedApps();
+
+  return {
+    featuredApps,
+  };
+}
 
 export function meta() {
   return [
@@ -9,12 +19,12 @@ export function meta() {
   ];
 }
 
-export default function HomePage() {
-  const { data: featuredApps } = useFeaturedApps();
+export default function HomePage({ loaderData }: Route.ComponentProps) {
+  const { featuredApps } = loaderData;
 
   return (
     <main className="layout-default max-w-4xl">
-      <div className="flex flex-col items-center text-center space-y-2 py-6">
+      <div className="flex flex-col items-center text-center space-y-2 py-3">
         <img
           src="/assets/profile.jpeg"
           alt="Luqmanoop Avatar"
