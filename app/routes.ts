@@ -46,12 +46,6 @@ export default [
   ...prefix("/apps", [
     layout("./layouts/apps-layout.tsx", [index("pages/apps.tsx")]),
 
-    layout("./layouts/app.tsx", [
-      ...apps
-        .filter((app) => !app.includes("index.mdx"))
-        .map((app) =>
-          route(app.replace(/^content\/apps\//, "").replace(".mdx", ""), app)
-        ),
-    ]),
+    layout("./layouts/app.tsx", [route(":appSlug", "pages/app.tsx")]),
   ]),
 ] satisfies RouteConfig;

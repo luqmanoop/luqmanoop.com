@@ -7,3 +7,5 @@ export type App = {
 };
 
 export type Apps = App[];
+
+export type AppsData = Record<string, App>;

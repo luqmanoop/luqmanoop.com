@@ -1,13 +1,11 @@
 import { useMemo } from "react";
 import useSWR from "swr";
+import appsJson from "~/data/apps.json";
 
-import type { Apps } from "~/types";
+import type { Apps, AppsData } from "~/types";
 
-const fetchApps = async () => {
-  const response = await fetch("/apps.json");
-  const apps = await response.json();
-
-  return apps as Apps;
+export const fetchApps = async () => {
+  return Object.values(appsJson) as Apps;
 };
 
 export const useFetchApps = () => useSWR("apps", fetchApps);

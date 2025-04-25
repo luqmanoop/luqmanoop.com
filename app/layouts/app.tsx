@@ -7,7 +7,3 @@ export default function AppLayout() {
     </main>
   );
 }
-
-export function meta() {
-  return [{ title: "App" }];
-}
