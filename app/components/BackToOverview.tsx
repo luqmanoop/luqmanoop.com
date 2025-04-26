@@ -10,7 +10,7 @@ export function BackToOverview({ to }: BackToOverviewProps) {
 		<Link
 			to={to}
 			viewTransition
-			className="no-underline flex items-center gap-2 group"
+			className="no-underline flex items-center gap-2 group md:hidden"
 		>
 			<ArrowLeftIcon className="w-6 h-6 transition-all duration-300 group-hover:-translate-x-1" />
 			Back to overview
