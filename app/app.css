@@ -24,3 +24,7 @@ body {
 .layout-default {
   @apply py-6 md:py-12 px-6 min-h-screen mx-auto;
 }
+
+.prose-overrides {
+  @apply prose-headings:mb-0 prose-headings:text-gray-900 dark:prose-headings:text-slate-300 prose-p:text-gray-900 dark:prose-p:text-slate-300 prose-a:text-gray-900 dark:prose-a:text-slate-300;
+}
