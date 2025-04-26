@@ -1,48 +1,60 @@
 {
-  "name": "luqmanoop.com",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "react-router build",
-    "dev": "react-router dev",
-    "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc",
-    "knip": "knip-bun",
-    "prepare": "husky"
-  },
-  "dependencies": {
-    "@mdx-js/react": "^3.1.0",
-    "@mdx-js/rollup": "^3.1.0",
-    "@react-router/node": "^7.5.1",
-    "@react-router/serve": "^7.5.1",
-    "@tailwindcss/typography": "^0.5.16",
-    "esbuild": "^0.25.3",
-    "glob": "^11.0.2",
-    "isbot": "^5.1.17",
-    "lucide-react": "^0.487.0",
-    "mdx-bundler": "^10.1.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-router": "^7.5.1",
-    "remark-frontmatter": "^5.0.0",
-    "remark-gfm": "^4.0.1",
-    "remark-mdx-frontmatter": "^5.1.0",
-    "slugify": "^1.6.6",
-    "typed.js": "^2.1.0"
-  },
-  "devDependencies": {
-    "@react-router/dev": "^7.5.1",
-    "@tailwindcss/vite": "^4.1.4",
-    "@types/bun": "^1.2.10",
-    "@types/node": "^20.17.30",
-    "@types/react": "^19.0.1",
-    "@types/react-dom": "^19.0.1",
-    "husky": "^9.1.7",
-    "knip": "^5.50.5",
-    "react-router-devtools": "^1.1.0",
-    "tailwindcss": "^4.1.4",
-    "typescript": "^5.8.3",
-    "vite": "^6.3.3",
-    "vite-tsconfig-paths": "^5.1.4"
-  }
+	"name": "luqmanoop.com",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "react-router build",
+		"dev": "react-router dev",
+		"start": "react-router-serve ./build/server/index.js",
+		"typecheck": "react-router typegen && tsc",
+		"knip": "knip-bun",
+		"prepare": "husky"
+	},
+	"dependencies": {
+		"@mdx-js/react": "^3.1.0",
+		"@mdx-js/rollup": "^3.1.0",
+		"@react-router/node": "^7.5.1",
+		"@react-router/serve": "^7.5.1",
+		"@tailwindcss/typography": "^0.5.16",
+		"esbuild": "^0.25.3",
+		"glob": "^11.0.2",
+		"isbot": "^5.1.17",
+		"lucide-react": "^0.487.0",
+		"mdx-bundler": "^10.1.1",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"react-router": "^7.5.1",
+		"remark-frontmatter": "^5.0.0",
+		"remark-gfm": "^4.0.1",
+		"remark-mdx-frontmatter": "^5.1.0",
+		"slugify": "^1.6.6",
+		"typed.js": "^2.1.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@react-router/dev": "^7.5.1",
+		"@tailwindcss/vite": "^4.1.4",
+		"@types/bun": "^1.2.10",
+		"@types/node": "^20.17.30",
+		"@types/react": "^19.0.1",
+		"@types/react-dom": "^19.0.1",
+		"husky": "^9.1.7",
+		"knip": "^5.50.5",
+		"lint-staged": "^15.5.1",
+		"react-router-devtools": "^1.1.0",
+		"tailwindcss": "^4.1.4",
+		"typescript": "^5.8.3",
+		"vite": "^6.3.3",
+		"vite-tsconfig-paths": "^5.1.4"
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx,json,jsonc,mdx,md}": [
+			"biome check --files-ignore-unknown=true",
+			"biome check --write --no-errors-on-unmatched",
+			"biome check --write --organize-imports-enabled=false --no-errors-on-unmatched",
+			"biome check --write --unsafe --no-errors-on-unmatched",
+			"biome format --write --no-errors-on-unmatched",
+			"biome lint --write --no-errors-on-unmatched"
+		]
+	}
 }
