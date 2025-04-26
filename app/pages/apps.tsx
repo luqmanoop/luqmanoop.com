@@ -5,22 +5,23 @@ import { Card } from "~/components";
 
 import { fetchApps } from "~/utils/apps";
 import type { Route } from "./+types/apps";
+import { getMetadata, SITE_NAME } from "~/utils";
 
 export async function loader() {
   const apps = await fetchApps();
 
+  const metadata = getMetadata({
+    title: "Apps",
+    description: `A collection of apps built by ${SITE_NAME}`,
+  });
+
   return {
     apps,
+    metadata,
   };
 }
 
-export function meta() {
-  return [
-    {
-      title: "Apps — luqmanoop",
-    },
-  ];
-}
+export const meta = ({ data }: Route.MetaArgs) => data.metadata;
 
 export default function Apps({ loaderData }: Route.ComponentProps) {
   const { apps } = loaderData;

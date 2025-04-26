@@ -1,10 +1,10 @@
-import { SITE_NAME } from "./constants";
 import type { Meta } from "~/types";
 
+import { SITE_NAME, SITE_URL } from "./constants";
 
 export const getMetadata = (meta: Meta) => {
-  const title = `${meta.title} - ${SITE_NAME}`;
-  const { description, imageUrl: image, url } = meta;
+  const title = `${meta.title} — ${SITE_NAME}`;
+  const { description, imageUrl, url = SITE_URL } = meta;
 
   return [
     { title },
@@ -23,7 +23,7 @@ export const getMetadata = (meta: Meta) => {
     },
     {
       property: "og:image",
-      content: image,
+      content: imageUrl,
     },
     {
       property: "og:url",
@@ -44,7 +44,7 @@ export const getMetadata = (meta: Meta) => {
     },
     {
       property: "twitter:image",
-      content: image,
+      content: imageUrl,
     },
     {
       property: "twitter:url",

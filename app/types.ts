@@ -2,8 +2,8 @@
 export interface Meta  {
   title: string;
   description: string;
-  imageUrl: string;
-  url: string;
+  imageUrl?: string;
+  url?: string;
 };
 
 export interface App extends Meta {
