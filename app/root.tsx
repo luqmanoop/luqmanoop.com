@@ -35,7 +35,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<Meta />
 				<Links />
 			</head>
-			<body className="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-white dark:bg-slate-950">
+			<body className="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-light dark:bg-slate-950">
 				<NavBar />
 
 				{children}

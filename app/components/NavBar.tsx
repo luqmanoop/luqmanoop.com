@@ -56,7 +56,7 @@ export const NavBar = () => {
 	};
 
 	return (
-		<header className="sticky top-0 z-50 shadow dark:shadow-none dark:border-b dark:border-slate-900 bg-white dark:bg-slate-950">
+		<header className="sticky top-0 z-50 shadow dark:shadow-none dark:border-b dark:border-slate-900 bg-light dark:bg-slate-950">
 			<div className="flex flex-col md:flex-row max-w-6xl md:px-6 md:py-4 mx-auto">
 				<div className="flex-1 grid grid-cols-[auto_1fr_auto] items-center md:flex md:justify-start shadow md:shadow-none p-4 md:p-0">
 					<button
