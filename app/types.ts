@@ -16,6 +16,10 @@ export interface App extends Meta {
 	tags: string[];
 	slug: string;
 	assets: Assets;
+	cta: {
+		label: string;
+		url: string;
+	};
 }
 
 export type Apps = App[];

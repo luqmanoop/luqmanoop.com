@@ -29,16 +29,16 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
 			<div className="flex flex-col items-center text-center space-y-2 py-3">
 				<img
 					src="/assets/profile.jpeg"
-					alt="Luqmanoop Avatar"
+					alt="Luqman Olushi Avatar"
 					className="w-36 h-36 object-cover border-6 border-gray-200 rounded-full"
 				/>
-				<h1 className="text-3xl font-semibold bg-gradient-to-r from-teal-600 to-orange-600 text-transparent bg-clip-text">
+				<h1 className="text-3xl md:text-5xl font-semibold bg-gradient-to-r from-teal-600 to-orange-600 text-transparent bg-clip-text tracking-tighter">
 					Luqman Olushi{" "}
 					<span title="Opemipo" className="hidden md:inline">
 						O.
 					</span>
 				</h1>
-				<p className="text-shadow text-gray-900 dark:text-gray-500">
+				<p className="text-gray-900 dark:text-gray-500 text-lg md:text-xl tracking-tight">
 					Software Engineer,{" "}
 					<span
 						className="underline decoration-wavy underline-offset-2"
