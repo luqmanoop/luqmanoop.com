@@ -4,35 +4,38 @@ import { bundleMDX } from "mdx-bundler";
 import slugify from "slugify";
 import type { App, Apps } from "~/types";
 
-import { SITE_URL } from "./constants";
+import { getAssets } from "./assets";
+import { PUBLIC_DIRNAME, SITE_URL } from "./constants";
 
-const appsDir = resolve("./app/content/apps");
+const appsContentDir = resolve("./app/content/apps");
+const appsAssetsDir = resolve(PUBLIC_DIRNAME, "assets/apps");
 
 const getAppMdxBundle = async (filename: string) => {
-	const appMdxFilepath = resolve(appsDir, `${filename}.mdx`);
+	const appMdxFilepath = resolve(appsContentDir, `${filename}.mdx`);
 
 	const { code, frontmatter } = await bundleMDX<App>({
 		file: appMdxFilepath,
-		cwd: appsDir,
+		cwd: appsContentDir,
 	});
 
 	const slug = frontmatter.slug || slugify(basename(filename), { lower: true });
-	const icon = frontmatter.icon || `/assets/apps/${slug}.png`;
+	const assetDir = resolve(appsAssetsDir, slug);
+	const assets = await getAssets(assetDir);
 
 	return {
 		code,
 		frontmatter: {
 			...frontmatter,
 			slug,
-			icon,
-			url: `${SITE_URL}/apps/${slug}`,
-			imageUrl: `${SITE_URL}${icon}`,
+			canonicalUrl: `${SITE_URL}/apps/${slug}`,
+			imageUrl: `${SITE_URL}${assets.icon}`,
+			assets,
 		} as App,
 	};
 };
 
 export const fetchApps = async () => {
-	const apps = await glob(resolve(appsDir, "*.mdx"));
+	const apps = await glob(resolve(appsContentDir, "*.mdx"));
 
 	const appsData: Apps = [];
 

@@ -3,14 +3,20 @@ import type { Meta } from "~/types";
 import { SITE_NAME, SITE_URL } from "./constants";
 
 export const getMetadata = (meta: Meta) => {
-	const title = `${meta.title} — ${SITE_NAME}`;
-	const { description, imageUrl, url = SITE_URL } = meta;
+	const title = `${meta.title ? `${meta.title} — ` : ""}${SITE_NAME}`;
+	const { description, imageUrl, canonicalUrl: url = SITE_URL } = meta;
 
 	return [
 		{ title },
 		{
 			name: "description",
 			content: description,
+		},
+		// Canonical URL
+		{
+			tagName: "link",
+			rel: "canonical",
+			href: url,
 		},
 		// Open Graph metadata
 		{

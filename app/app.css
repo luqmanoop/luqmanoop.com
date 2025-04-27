@@ -29,3 +29,11 @@ body {
 .prose-overrides {
   @apply prose-headings:mb-0 prose-headings:text-gray-900 dark:prose-headings:text-slate-300 prose-p:text-gray-900 dark:prose-p:text-slate-300 prose-a:text-gray-900 dark:prose-a:text-slate-300;
 }
+
+.dark-hover {
+  @apply hover:shadow-xl dark:sm:hover:shadow-indigo-500/20 transition duration-500;
+}
+
+.button {
+  @apply min-w-40 md:min-w-52 md:text-lg font-semibold tracking-tight rounded-lg px-8 py-2.5 me-2 mb-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800;
+}

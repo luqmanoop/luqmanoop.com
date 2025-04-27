@@ -6,7 +6,7 @@ const isServer = typeof window === "undefined";
 
 export const useTheme = () => {
 	const [theme, setTheme] = useState<Theme>(
-		isServer ? "dark" : (localStorage.theme as Theme),
+		isServer ? "light" : (localStorage.theme as Theme),
 	);
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies:

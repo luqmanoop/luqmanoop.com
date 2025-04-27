@@ -19,8 +19,8 @@ const Link = ({
 			className={({ isActive }) =>
 				[
 					isActive
-						? "underline underline-offset-[8px] decoration-2 decoration-orange-500"
-						: "relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-orange-500 after:transition-all after:duration-300 hover:after:w-full",
+						? "underline underline-offset-[8px] decoration-4 decoration-orange-500"
+						: "relative after:content-[''] after:absolute after:-bottom-[0.3rem] after:left-0 after:w-0 after:h-[4px] after:bg-orange-500 after:transition-all after:duration-300 hover:after:w-full",
 					" dark:hover:text-gray-400 select-none",
 				].join(" ")
 			}
@@ -56,9 +56,9 @@ export const NavBar = () => {
 	};
 
 	return (
-		<header className="sticky top-0 z-50 shadow dark:shadow-none dark:border-b dark:border-slate-900 bg-light dark:bg-slate-950">
+		<header className="sticky top-0 z-50 bg-light dark:bg-slate-950">
 			<div className="flex flex-col md:flex-row max-w-6xl md:px-6 md:py-4 mx-auto">
-				<div className="flex-1 grid grid-cols-[auto_1fr_auto] items-center md:flex md:justify-start shadow md:shadow-none p-4 md:p-0">
+				<div className="flex-1 grid grid-cols-[auto_1fr_auto] items-center md:flex md:justify-start md:shadow-none px-4 py-2 md:p-0 border-b border-gray-200 dark:border-b dark:border-slate-900 md:border-none">
 					<button
 						type="button"
 						aria-label="Toggle menu"
@@ -76,13 +76,13 @@ export const NavBar = () => {
 					>
 						<img
 							src="/assets/logo-light.png"
-							className="w-[4.8rem] md:w-[5.4rem] dark:hidden"
+							className="w-[5.4rem] dark:hidden"
 							alt="luqmanoop logo"
 						/>
 						<img
 							src="/assets/logo-dark.png"
 							alt="luqmanoop logo"
-							className="w-[4.8rem] md:w-[5.4rem] hidden dark:block"
+							className="w-[5.4rem] hidden dark:block"
 						/>
 					</NavLink>
 

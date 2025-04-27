@@ -1,6 +1,7 @@
 import { Card } from "~/components";
 import { getFeaturedApps } from "~/utils/apps";
 
+import { SITE_URL, getMetadata } from "~/utils";
 import type { Route } from "./+types/home";
 
 export async function loader() {
@@ -8,15 +9,16 @@ export async function loader() {
 
 	return {
 		featuredApps,
+		metadata: getMetadata({
+			title: "",
+			description: "Software Engineer, Part-Time Creator",
+			canonicalUrl: SITE_URL,
+		}),
 	};
 }
 
-export function meta() {
-	return [
-		{
-			title: "Home — luqmanoop",
-		},
-	];
+export function meta({ data }: Route.MetaArgs) {
+	return data.metadata;
 }
 
 export default function HomePage({ loaderData }: Route.ComponentProps) {
@@ -30,7 +32,7 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
 					alt="Luqmanoop Avatar"
 					className="w-36 h-36 object-cover border-6 border-gray-200 rounded-full"
 				/>
-				<h1 className="text-3xl font-semibold bg-gradient-to-r from-teal-500 to-orange-500 text-transparent bg-clip-text">
+				<h1 className="text-3xl font-semibold bg-gradient-to-r from-teal-600 to-orange-600 text-transparent bg-clip-text">
 					Luqman Olushi{" "}
 					<span title="Opemipo" className="hidden md:inline">
 						O.
@@ -62,7 +64,7 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
 						<Card
 							key={app.title}
 							title={app.title}
-							image={app.icon}
+							image={app.assets.icon}
 							description={app.description}
 							link={`/apps/${app.slug}`}
 							tags={app.tags}

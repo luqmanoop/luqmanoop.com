@@ -1,14 +1,21 @@
 export interface Meta {
 	title: string;
 	description: string;
+	/** absolute url to the image */
 	imageUrl?: string;
-	url?: string;
+	canonicalUrl: string;
+}
+
+export interface Assets {
+	icon: string;
+	screenshots: string[];
+	videos: string[];
 }
 
 export interface App extends Meta {
 	tags: string[];
 	slug: string;
-	icon: string;
+	assets: Assets;
 }
 
 export type Apps = App[];
