@@ -27,7 +27,7 @@ body {
 }
 
 .prose-overrides {
-  @apply prose-headings:mb-0 prose-headings:text-gray-900 dark:prose-headings:text-slate-300 prose-p:text-gray-900 dark:prose-p:text-slate-300 prose-a:text-gray-900 dark:prose-a:text-slate-300;
+  @apply prose-headings:text-gray-900 dark:prose-headings:text-slate-300 prose-p:text-gray-900 dark:prose-p:text-slate-300 prose-a:text-gray-900 dark:prose-a:text-slate-300 md:prose-lg prose-a:decoration-blue-500 underline-offset-3;
 }
 
 .dark-hover {

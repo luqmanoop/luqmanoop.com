@@ -54,7 +54,7 @@ export default function AppPage({ loaderData }: Route.ComponentProps) {
 			<BackToOverview to="/apps" label="Go to apps" />
 
 			<section>
-				<div className="flex flex-col items-center text-center gap-2 pt-4 md:mb-20">
+				<div className="flex flex-col items-center text-center gap-2 pt-4 md:mb-8">
 					<img
 						src={app.assets.icon}
 						alt={app.title}
