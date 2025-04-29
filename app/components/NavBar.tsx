@@ -20,7 +20,7 @@ const Link = ({
 				[
 					isActive
 						? "underline underline-offset-[8px] decoration-4 decoration-orange-500"
-						: "relative after:content-[''] after:absolute after:-bottom-[0.3rem] after:left-0 after:w-0 after:h-[4px] after:bg-orange-500 after:transition-all after:duration-300 hover:after:w-full",
+						: "relative after:content-[''] after:absolute after:-bottom-[0.3rem] after:left-0 after:w-0 after:h-[4px] after:bg-orange-500 after:transition-all after:duration-200 hover:after:w-full",
 					" dark:hover:text-gray-400 select-none",
 				].join(" ")
 			}

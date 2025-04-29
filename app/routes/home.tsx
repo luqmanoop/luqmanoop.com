@@ -32,7 +32,7 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
 					alt="Luqman Olushi Avatar"
 					className="w-36 h-36 object-cover border-6 border-gray-200 rounded-full"
 				/>
-				<h1 className="text-3xl md:text-5xl font-semibold bg-gradient-to-r from-teal-600 to-orange-600 text-transparent bg-clip-text tracking-tighter">
+				<h1 className="text-3xl md:text-4xl font-semibold bg-gradient-to-r from-teal-600 to-orange-600 text-transparent bg-clip-text tracking-tighter">
 					Luqman Olushi{" "}
 					<span title="Opemipo" className="hidden md:inline">
 						O.
