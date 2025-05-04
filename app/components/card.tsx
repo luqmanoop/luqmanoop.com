@@ -1,5 +1,4 @@
 import { ExternalLink } from "lucide-react";
-import { useLocation } from "react-router";
 import { Link } from "react-router";
 
 type CardProps = {
@@ -42,7 +41,7 @@ const Card = (props: CardProps) => {
 					{isExternal && <ExternalLink className="w-4 h-4 ml-2 inline" />}
 				</h3>
 				<p
-					className={`text-ellipsis line-clamp-2 ${
+					className={`text-ellipsis line-clamp-2 grow ${
 						size === "large" ? "md:text-lg" : ""
 					}`}
 				>

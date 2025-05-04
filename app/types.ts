@@ -20,6 +20,7 @@ export interface App extends Meta {
 		label: string;
 		url: string;
 	};
+	isArchived?: boolean;
 }
 
 export type Apps = App[];

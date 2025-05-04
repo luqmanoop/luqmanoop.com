@@ -43,6 +43,8 @@ export const fetchApps = async () => {
 		const filename = app.replace(".mdx", "");
 		const { frontmatter } = await getAppMdxBundle(filename);
 
+		if (frontmatter.isArchived) continue;
+
 		appsData.push(frontmatter);
 	}
 
@@ -61,7 +63,7 @@ export const fetchApp = async (slug: string) => {
 export const getFeaturedApps = async () => {
 	const apps = await fetchApps();
 
-	const appsToFeature = ["x-mass-unfollow", "1loc-vscode"];
+	const appsToFeature = ["x-mass-unfollow", "y-premium"];
 
 	return apps.filter((app) => appsToFeature.includes(app.slug));
 };
