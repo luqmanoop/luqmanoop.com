@@ -68,14 +68,16 @@ export default function AppPage({ loaderData }: Route.ComponentProps) {
 							{app.description}
 						</p>
 
-						<button type="button" className="button">
-							<Link
-								to={app.cta.url}
-								className="px-8 py-2.5 flex items-center gap-2"
-							>
-								<DownloadIcon size={16} /> {app.cta.label}
-							</Link>
-						</button>
+						{app.cta && (
+							<button type="button" className="button">
+								<Link
+									to={app.cta.url}
+									className="px-8 py-2.5 flex items-center gap-2"
+								>
+									<DownloadIcon size={16} /> {app.cta.label}
+								</Link>
+							</button>
+						)}
 					</div>
 				</div>
 			</section>

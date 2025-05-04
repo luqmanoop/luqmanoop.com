@@ -16,7 +16,7 @@ export interface App extends Meta {
 	tags: string[];
 	slug: string;
 	assets: Assets;
-	cta: {
+	cta?: {
 		label: string;
 		url: string;
 	};
