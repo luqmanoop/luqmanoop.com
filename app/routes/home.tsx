@@ -30,7 +30,7 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
 				<img
 					src="/assets/profile.jpeg"
 					alt="Luqman Olushi Avatar"
-					className="w-36 h-36 object-cover border-6 border-gray-200 rounded-full"
+					className="w-36 h-36 object-cover rounded-full"
 				/>
 				<h1 className="text-3xl md:text-4xl font-semibold bg-gradient-to-r from-teal-600 to-orange-600 text-transparent bg-clip-text tracking-tighter">
 					Luqman Olushi{" "}
