@@ -8,7 +8,7 @@ const toRelativePath = (path: string) => path.split(PUBLIC_DIRNAME)[1];
 
 export const getAssets = async (dirname: string): Promise<Assets> => {
 	const [[icon = ""], screenshots = [], videos = []] = await Promise.all([
-		glob(resolve(dirname, "icon*.{jpg,png,jpeg}")),
+		glob(resolve(dirname, "icon.{jpg,png,jpeg}")),
 		getScreenshots(dirname),
 		getVideos(dirname),
 	]);
