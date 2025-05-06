@@ -23,7 +23,7 @@ body {
 }
 
 .layout-default {
-  @apply py-6 md:py-12 px-6 min-h-screen mx-auto;
+  @apply py-6 md:py-6 px-4 md:px-6 min-h-screen mx-auto;
 }
 
 .prose-overrides {

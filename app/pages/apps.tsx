@@ -29,9 +29,9 @@ export default function Apps({ loaderData }: Route.ComponentProps) {
 
 	useEffect(() => {
 		const typed = new Typed("#typed", {
-			strings: ["web", "desktop", "mobile"],
+			strings: ["web", "mac", "iOS"],
 			typeSpeed: 80,
-			backDelay: 1500,
+			backDelay: 1200,
 			loop: true,
 			smartBackspace: true,
 		});
@@ -43,8 +43,8 @@ export default function Apps({ loaderData }: Route.ComponentProps) {
 
 	return (
 		<div>
-			<h1 className="leading-snug md:leading-normal tracking-tighter text-5xl md:text-6xl pt-6 pb-14 font-bold text-center text-shadow text-shadow-red-500">
-				Quality <br className="md:hidden" />
+			<h1 className="pt-3 pb-10 md:pt-6 -mx-4 md:-mx-0 leading-snug md:leading-normal tracking-tighter text-[2.4rem] md:text-6xl font-bold text-center text-shadow text-shadow-red-500">
+				Quality{" "}
 				<span
 					id="typed"
 					className="bg-gradient-to-r from-teal-600 to-orange-600 text-transparent bg-clip-text"

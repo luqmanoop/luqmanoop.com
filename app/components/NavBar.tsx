@@ -58,12 +58,12 @@ export const NavBar = () => {
 	return (
 		<header className="sticky top-0 z-50 bg-light dark:bg-slate-950">
 			<div className="flex flex-col md:flex-row max-w-6xl md:px-6 md:py-4 mx-auto">
-				<div className="flex-1 grid grid-cols-[auto_1fr_auto] items-center md:flex md:justify-start md:shadow-none px-4 py-2 md:p-0 border-b border-gray-200 dark:border-b dark:border-slate-900 md:border-none">
+				<div className="flex-1 grid grid-cols-[auto_1fr_auto] items-center md:flex md:justify-start md:shadow-none px-3 py-2 md:p-0 border-b border-gray-200 dark:border-b dark:border-slate-900 md:border-none">
 					<button
 						type="button"
 						aria-label="Toggle menu"
 						onClick={() => onToggleNavigation()}
-						className="p-2 focus:ring-gray-300 focus:ring-4 focus:outline-none rounded-md focus:dark:ring-gray-700 md:hidden"
+						className=" focus:ring-gray-300 focus:ring-4 focus:outline-none rounded-md focus:dark:ring-gray-700 md:hidden"
 					>
 						<Menu className="h-6 w-6" />
 					</button>
@@ -86,7 +86,7 @@ export const NavBar = () => {
 						/>
 					</NavLink>
 
-					<div className="md:hidden p-2">
+					<div className="md:hidden">
 						<ThemeToggle />
 					</div>
 				</div>

@@ -58,13 +58,13 @@ export default function AppPage({ loaderData }: Route.ComponentProps) {
 					<img
 						src={app.assets.icon}
 						alt={app.title}
-						className="w-40 h-40 md:w-56 md:h-56 md:-mt-5"
+						className="w-48 h-48 md:w-56 md:h-56 md:-mt-5"
 					/>
 					<div className="flex flex-col gap-2 items-center">
-						<h1 className="text-4xl md:text-6xl font-bold tracking-tighter">
+						<h1 className="text-[2.5rem] md:text-6xl font-bold tracking-tighter">
 							{app.title}
 						</h1>
-						<p className="text-xl md:text-3xl tracking-tight mb-6">
+						<p className="text-[1.35rem] md:text-3xl tracking-tight mb-3 md:mb-6">
 							{app.description}
 						</p>
 
@@ -82,7 +82,7 @@ export default function AppPage({ loaderData }: Route.ComponentProps) {
 				</div>
 			</section>
 
-			<section className="border-t py-6 mt-6 border-gray-200 dark:border-slate-900 mb-8">
+			<section className="border-t pt-6 mt-6 border-gray-200 dark:border-slate-900 mb-8">
 				{screenshots}
 			</section>
 

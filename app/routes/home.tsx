@@ -30,7 +30,7 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
 				<img
 					src="/assets/profile.jpeg"
 					alt="Luqman Olushi Avatar"
-					className="w-36 h-36 object-cover rounded-full"
+					className="w-32 h-32 md:w-36 md:h-36 object-cover rounded-full"
 				/>
 				<h1 className="text-3xl md:text-4xl font-semibold bg-gradient-to-r from-teal-600 to-orange-600 text-transparent bg-clip-text tracking-tighter">
 					Luqman Olushi{" "}
@@ -55,9 +55,9 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
 				</p>
 			</div>
 
-			<section className="mt-16">
+			<section className="mt-8">
 				<h2 className="text-sm font-medium text-gray-400 uppercase mb-4">
-					Featured
+					Featured Apps
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 					{featuredApps?.map((app) => (
@@ -71,7 +71,7 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
 						/>
 					))}
 
-					<Card
+					{/* <Card
 						title="Youtube"
 						description="My YouTube channel. Subscribe to get notified when I upload new videos."
 						link="https://youtube.com/@luqmanoop?sub_confirmation=1"
@@ -83,7 +83,7 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
 						description="A repository of my projects and open-source contributions."
 						link="https://github.com/luqmanoop"
 						tags={["github"]}
-					/>
+					/> */}
 				</div>
 			</section>
 		</main>
