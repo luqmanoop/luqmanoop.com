@@ -21,6 +21,7 @@ export interface App extends Meta {
 		url: string;
 	};
 	isArchived?: boolean;
+	releasedDate: string;
 }
 
 export type Apps = App[];

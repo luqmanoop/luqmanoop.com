@@ -1,12 +1,13 @@
 import { basename, resolve } from "node:path";
 import { glob } from "glob";
+import { orderBy } from "lodash-es";
 import { bundleMDX } from "mdx-bundler";
 import slugify from "slugify";
+
 import type { App, Apps } from "~/types";
 
 import { getAssets } from "./assets";
 import { PUBLIC_DIRNAME, SITE_URL } from "./constants";
-
 const appsContentDir = resolve("./app/content/apps");
 const appsAssetsDir = resolve(PUBLIC_DIRNAME, "assets/apps");
 
@@ -30,6 +31,7 @@ const getAppMdxBundle = async (filename: string) => {
 			canonicalUrl: `${SITE_URL}/apps/${slug}`,
 			imageUrl: `${SITE_URL}${assets.icon}`,
 			assets,
+			releasedDate: frontmatter.releasedDate || new Date().toISOString(),
 		} as App,
 	};
 };
@@ -48,7 +50,7 @@ export const fetchApps = async () => {
 		appsData.push(frontmatter);
 	}
 
-	return appsData;
+	return orderBy(appsData, ["releasedDate"], ["desc"]);
 };
 
 export const fetchApp = async (slug: string) => {
@@ -63,7 +65,7 @@ export const fetchApp = async (slug: string) => {
 export const getFeaturedApps = async () => {
 	const apps = await fetchApps();
 
-	const appsToFeature = ["x-mass-unfollow", "y-premium"];
+	const appsToFeature = ["brew-tube", "x-mass-unfollow"];
 
 	return apps.filter((app) => appsToFeature.includes(app.slug));
 };
