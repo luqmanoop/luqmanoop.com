@@ -12,7 +12,7 @@ export async function loader() {
 
 	const metadata = getMetadata({
 		title: "Apps",
-		description: `A collection of apps built by ${SITE_NAME}`,
+		description: `Apps built for the web, macOS, and iOS by ${SITE_NAME}`,
 		canonicalUrl: `${SITE_URL}/apps`,
 	});
 
@@ -81,9 +81,9 @@ export default function Apps({ loaderData }: Route.ComponentProps) {
 						title={app.title}
 						description={app.description}
 						link={`/apps/${app.slug}`}
-						size="large"
 						tags={app.tags}
 						image={app.assets.icon}
+						isNew={app.isNew}
 					/>
 				))}
 			</div>

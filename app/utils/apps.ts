@@ -1,4 +1,5 @@
 import { basename, resolve } from "node:path";
+import { differenceInDays } from "date-fns";
 import { glob } from "glob";
 import { orderBy } from "lodash-es";
 import { bundleMDX } from "mdx-bundler";
@@ -23,6 +24,10 @@ const getAppMdxBundle = async (filename: string) => {
 	const assetDir = resolve(appsAssetsDir, slug);
 	const assets = await getAssets(assetDir);
 
+	const isNew =
+		frontmatter.releasedDate &&
+		differenceInDays(new Date(), new Date(frontmatter.releasedDate)) < 30;
+
 	return {
 		code,
 		frontmatter: {
@@ -32,6 +37,7 @@ const getAppMdxBundle = async (filename: string) => {
 			imageUrl: `${SITE_URL}${assets.icon}`,
 			assets,
 			releasedDate: frontmatter.releasedDate || new Date().toISOString(),
+			isNew,
 		} as App,
 	};
 };

@@ -37,7 +37,7 @@ export default function AppPage({ loaderData }: Route.ComponentProps) {
 		return (
 			<div className="flex flex-col gap-6">
 				{videos.map((videoSrc) => (
-					<video key={videoSrc} loop autoPlay muted>
+					<video key={videoSrc} loop muted autoPlay playsInline>
 						<source src={videoSrc} type="video/mp4" />
 					</video>
 				))}
@@ -58,13 +58,13 @@ export default function AppPage({ loaderData }: Route.ComponentProps) {
 					<img
 						src={app.assets.icon}
 						alt={app.title}
-						className="w-48 h-48 md:w-56 md:h-56 md:-mt-5"
+						className="w-44 h-44 md:w-56 md:h-56 md:-mt-5"
 					/>
 					<div className="flex flex-col gap-2 items-center">
-						<h1 className="text-[2.5rem] md:text-6xl font-bold tracking-tighter">
+						<h1 className="text-4xl md:text-6xl font-bold tracking-tighter">
 							{app.title}
 						</h1>
-						<p className="text-[1.35rem] md:text-3xl tracking-tight mb-3 md:mb-6">
+						<p className="text-xl md:text-3xl tracking-tight mb-3 md:mb-6">
 							{app.description}
 						</p>
 
