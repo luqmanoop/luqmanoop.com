@@ -59,7 +59,7 @@ export default function Apps({ loaderData }: Route.ComponentProps) {
 				<p className="text-center text-lg md:text-2xl tracking-tight font-semibold">
 					Built for{" "}
 					<span id="platforms" className="font-semibold">
-						web, macOS, &amp; iOS
+						web, macOS &amp; iOS
 					</span>{" "}
 					<br className="hidden" />
 					platforms
