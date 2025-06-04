@@ -4,9 +4,12 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+  --font-inter: "Inter", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-lexend: "Lexend", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --color-light: #faf9f6; /* off white */
+  --color-dark: #090b16;
 }
 
 #permalink {
@@ -15,6 +18,7 @@
 
 html,
 body {
+  font-family: var(--font-lexend);
   scroll-behavior: smooth;
 
   @media (prefers-color-scheme: dark) {
@@ -23,7 +27,7 @@ body {
 }
 
 .layout-default {
-  @apply py-6 md:py-6 px-4 md:px-6 min-h-screen mx-auto;
+  @apply py-6 md:py-6 px-4 md:px-6 mx-auto flex-2/3 w-full;
 }
 
 .prose-overrides {

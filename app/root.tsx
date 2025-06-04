@@ -23,6 +23,10 @@ export const links: Route.LinksFunction = () => [
 		rel: "stylesheet",
 		href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
 	},
+	{
+		rel: "stylesheet",
+		href: "https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap",
+	},
 	{ rel: "icon", href: "/favicon.ico?v=1" },
 ];
 
@@ -35,7 +39,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<Meta />
 				<Links />
 			</head>
-			<body className="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-light dark:bg-slate-950">
+			<body className="min-h-screen flex flex-col antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-light dark:bg-dark">
 				<NavBar />
 
 				{children}

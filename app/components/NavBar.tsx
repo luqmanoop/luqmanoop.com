@@ -56,9 +56,9 @@ export const NavBar = () => {
 	};
 
 	return (
-		<header className="sticky top-0 z-50 bg-light dark:bg-slate-950">
+		<header className="sticky top-0 z-50 bg-light dark:bg-dark select-none">
 			<div className="flex flex-col md:flex-row max-w-6xl md:px-6 md:py-4 mx-auto">
-				<div className="flex-1 grid grid-cols-[auto_1fr_auto] items-center md:flex md:justify-start md:shadow-none px-3 py-2 md:p-0 border-b border-gray-200 dark:border-b dark:border-slate-900 md:border-none">
+				<div className="flex-1 flex justify-between md:grid-cols-[auto_1fr_auto] items-center md:flex md:justify-start md:shadow-none px-3 py-4 md:p-0 border-b border-gray-200 dark:border-b dark:border-slate-900 md:border-none">
 					<button
 						type="button"
 						aria-label="Toggle menu"
@@ -74,19 +74,10 @@ export const NavBar = () => {
 						onClick={handleNavigationItemClick}
 						className="flex justify-center"
 					>
-						<img
-							src="/assets/logo-light.png"
-							className="w-[5.4rem] dark:hidden"
-							alt="luqmanoop logo"
-						/>
-						<img
-							src="/assets/logo-dark.png"
-							alt="luqmanoop logo"
-							className="w-[5.4rem] hidden dark:block"
-						/>
+						<h3 className="text-lg font-semibold">Luqman Olushi</h3>
 					</NavLink>
 
-					<div className="md:hidden">
+					<div className=" md:hidden">
 						<ThemeToggle />
 					</div>
 				</div>

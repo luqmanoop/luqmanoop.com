@@ -61,11 +61,3 @@ export const fetchApp = async (slug: string) => {
 		code,
 	};
 };
-
-export const getFeaturedApps = async () => {
-	const apps = await fetchApps();
-
-	const appsToFeature = ["brew-tube", "x-mass-unfollow"];
-
-	return apps.filter((app) => appsToFeature.includes(app.slug));
-};

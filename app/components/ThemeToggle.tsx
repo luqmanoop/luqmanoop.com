@@ -6,13 +6,13 @@ export const ThemeToggle = () => {
 
 	return theme === "dark" ? (
 		<SunIcon
-			className="w-5 h-5 cursor-pointer hover:text-gray-400 select-none"
+			className="w-6 h-6 cursor-pointer hover:text-gray-400 select-none"
 			aria-label="Toggle dark mode"
 			onClick={() => setTheme("light")}
 		/>
 	) : (
 		<MoonIcon
-			className="w-5 h-5 cursor-pointer hover:text-gray-400 select-none"
+			className="w-6 h-6 cursor-pointer hover:text-gray-400 select-none"
 			aria-label="Toggle dark mode"
 			onClick={() => setTheme("dark")}
 		/>

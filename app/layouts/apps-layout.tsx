@@ -2,7 +2,7 @@ import { Outlet } from "react-router";
 
 export default function AppsLayout() {
 	return (
-		<main className="layout-default max-w-6xl">
+		<main className="layout-default max-w-4xl">
 			<Outlet />
 		</main>
 	);
