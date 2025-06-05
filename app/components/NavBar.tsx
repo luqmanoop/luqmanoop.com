@@ -1,5 +1,6 @@
-import { Menu } from "lucide-react";
-import { NavLink } from "react-router";
+import { Menu, X as MenuCloseIcon } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router";
 
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -39,42 +40,60 @@ const pagesLinks = [
 ];
 
 export const NavBar = () => {
-	const onToggleNavigation = () => {
-		document.body.classList.toggle("overflow-hidden");
-		document.getElementById("navigation")?.classList.toggle("hidden");
-	};
+	const [isNavigationOpen, setIsNavigationOpen] = useState(false);
 
-	const handleNavigationItemClick = () => {
+	const isHomePage = useLocation().pathname === "/";
+
+	const resetNavigation = useCallback(() => {
+		if (!isNavigationOpen) return;
+
+		setIsNavigationOpen(false);
+
 		document.body.classList.remove("overflow-hidden");
-		const navigationElement = document.getElementById("navigation");
+		document.getElementById("navigation")?.classList.add("hidden");
+		document.getElementById("navigation-overlay")?.classList.add("hidden");
+	}, [isNavigationOpen]);
 
-		if (!navigationElement || navigationElement.classList.contains("hidden")) {
-			return;
+	useEffect(() => {
+		if (isNavigationOpen) {
+			document.body.classList.add("overflow-hidden");
+			document.getElementById("navigation")?.classList.remove("hidden");
+			document.getElementById("navigation-overlay")?.classList.remove("hidden");
+		} else {
+			resetNavigation();
 		}
 
-		navigationElement.classList.add("hidden");
+		return () => resetNavigation();
+	}, [isNavigationOpen, resetNavigation]);
+
+	const onToggleNavigation = () => {
+		setIsNavigationOpen(!isNavigationOpen);
 	};
 
 	return (
 		<header className="sticky top-0 z-50 bg-light dark:bg-dark select-none">
-			<div className="flex flex-col md:flex-row max-w-6xl md:px-6 md:py-4 mx-auto">
-				<div className="flex-1 flex justify-between md:grid-cols-[auto_1fr_auto] items-center md:flex md:justify-start md:shadow-none px-3 py-4 md:p-0 border-b border-gray-200 dark:border-b dark:border-slate-900 md:border-none">
+			<div className="flex flex-col md:flex-row max-w-6xl md:px-6 md:py-4 mx-auto relative">
+				<div className="flex-1 flex justify-between md:grid-cols-[auto_1fr_auto] items-center md:flex md:justify-start md:shadow-none px-3 py-4 md:p-0 border-b border-gray-200 dark:border-slate-900 md:border-none">
 					<button
 						type="button"
 						aria-label="Toggle menu"
 						onClick={() => onToggleNavigation()}
 						className=" focus:ring-gray-300 focus:ring-4 focus:outline-none rounded-md focus:dark:ring-gray-700 md:hidden"
 					>
-						<Menu className="h-6 w-6" />
+						{isNavigationOpen ? (
+							<MenuCloseIcon className="h-6 w-6" />
+						) : (
+							<Menu className="h-6 w-6" />
+						)}
 					</button>
 
 					<NavLink
 						to="/"
 						viewTransition
-						onClick={handleNavigationItemClick}
-						className="flex justify-center"
+						onClick={resetNavigation}
+						className={`flex justify-center ${isHomePage ? "hidden md:flex" : ""}`}
 					>
-						<h3 className="text-lg font-semibold">Luqman Olushi</h3>
+						<h3 className="text-lg font-semibold">ˏˋLuqman Olushiˎˊ</h3>
 					</NavLink>
 
 					<div className=" md:hidden">
@@ -82,18 +101,25 @@ export const NavBar = () => {
 					</div>
 				</div>
 
+				{/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+				<div
+					id="navigation-overlay"
+					className="hidden absolute top-full z-10 h-screen backdrop-blur-sm bg-white/30 dark:bg-black/30 w-full"
+					onClick={resetNavigation}
+				/>
+
 				<nav
-					className="items-center w-full md:w-auto hidden md:flex h-screen md:h-auto"
+					className="items-center w-full md:w-auto hidden md:flex h-auto md:border-none border-b-2 border-gray-200 dark:border-slate-900 absolute top-full z-20 md:relative bg-light dark:bg-dark"
 					id="navigation"
 					aria-label="Navigation"
 				>
-					<ul className="md:space-x-8 space-y-8 md:space-y-0 px-6 py-6 md:p-0 md:flex font-medium md:items-center text-lg md:text-base">
+					<ul className="md:space-x-8 space-y-8 md:space-y-0 px-3 py-6 md:px-6 md:p-0 flex flex-col md:flex-row font-medium md:items-center text-lg md:text-base">
 						{pagesLinks.map((link) => (
-							<li key={link.to} className="md:inline-flex">
+							<li key={link.to} className="block text-center md:inline-flex">
 								<Link
 									to={link.to}
 									label={link.label}
-									onClick={handleNavigationItemClick}
+									onClick={resetNavigation}
 								/>
 							</li>
 						))}
