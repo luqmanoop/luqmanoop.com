@@ -33,3 +33,15 @@ const getVideos = async (dirname: string) => {
 
 	return videos.sort((a, b) => a.localeCompare(b));
 };
+
+export const getPostImageUrl = async (dirname: string, slug: string) => {
+	const postImages = await glob(
+		resolve(dirname, `${slug}*.{png,jpg,jpeg,gif,webp}`),
+	);
+
+	if (postImages.length > 0) {
+		return toRelativePath(postImages[0]);
+	}
+
+	return null;
+};

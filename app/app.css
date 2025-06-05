@@ -34,8 +34,8 @@ body {
   @apply prose-headings:text-gray-900 dark:prose-headings:text-slate-300 prose-p:text-gray-900 dark:prose-p:text-slate-300 prose-a:text-gray-900 dark:prose-a:text-slate-300 md:prose-lg prose-a:decoration-blue-500 underline-offset-3;
 }
 
-.dark-hover {
-  @apply hover:shadow-xl dark:sm:hover:shadow-indigo-500/20 transition duration-500;
+.hover-effect {
+  @apply shadow-2xs md:shadow-sm dark:shadow-lg hover:shadow-xl dark:sm:hover:shadow-indigo-500/20 transition duration-500;
 }
 
 .button {

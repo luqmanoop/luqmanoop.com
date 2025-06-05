@@ -11,10 +11,6 @@ const pages = await glob("pages/*.mdx", {
 	cwd: import.meta.dirname,
 });
 
-const blogPosts = await glob("content/blog/*.mdx", {
-	cwd: import.meta.dirname,
-});
-
 export default [
 	index("routes/home.tsx"),
 
@@ -25,14 +21,8 @@ export default [
 	]),
 
 	...prefix("/blog", [
-		layout("./layouts/blog.tsx", [
-			index("content/blog/index.mdx"),
-			...blogPosts
-				.filter((post) => !post.includes("index.mdx"))
-				.map((post) =>
-					route(post.replace(/^content\/blog\//, "").replace(".mdx", ""), post),
-				),
-		]),
+		index("pages/blog.tsx"),
+		route(":postSlug", "pages/blog-post.tsx"),
 	]),
 
 	...prefix("/apps", [

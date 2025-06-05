@@ -19,5 +19,5 @@
 			"vite.config.{js,mjs,ts,cjs,mts,cts}"
 		]
 	},
-	"ignore": ["app/content/apps/**/*.mdx"]
+	"ignore": ["app/content/apps/**/*.mdx", "app/content/blog/**/*.mdx"]
 }

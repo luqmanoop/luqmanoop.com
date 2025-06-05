@@ -16,7 +16,7 @@ const Card = (props: CardProps) => {
 		<Link
 			to={link}
 			viewTransition
-			className="flex flex-col items-center gap-2 border border-gray-200 dark:border-slate-800 rounded-lg p-4 md:py-6 sm:rounded-xl shadow-2xs md:shadow-sm dark:shadow-lg hover:shadow-xl dark:sm:hover:shadow-indigo-500/20 transition duration-500 relative"
+			className="flex flex-col items-center gap-2 border border-gray-200 dark:border-slate-800 rounded-lg p-4 md:py-6 sm:rounded-xl relative hover-effect"
 		>
 			{isNew && (
 				<span className="absolute top-0 right-0 bg-orange-500 dark:text-slate-950 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">

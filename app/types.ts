@@ -26,3 +26,13 @@ export interface App extends Meta {
 }
 
 export type Apps = App[];
+
+export interface Post extends Meta {
+	slug: string;
+	date: string;
+	description: string;
+	isDraft?: boolean;
+	readingTime: string;
+}
+
+export type Posts = Post[];
