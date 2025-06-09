@@ -4,7 +4,7 @@ import { getMDXComponent } from "mdx-bundler/client";
 import { useMemo } from "react";
 import { Link } from "react-router";
 
-import { BackToOverview } from "~/components";
+import { BackToOverview, Donations } from "~/components";
 import { fetchApp, getMetadata } from "~/utils";
 
 import type { Route } from "./+types/app";
@@ -89,6 +89,12 @@ export default function AppPage({ loaderData }: Route.ComponentProps) {
 			<div className="prose dark:prose-invert prose-overrides">
 				<MdxComponent app={app} />
 			</div>
+
+			{!app.isPaid && (
+				<div className="flex justify-center mt-6">
+					<Donations />
+				</div>
+			)}
 		</div>
 	);
 }

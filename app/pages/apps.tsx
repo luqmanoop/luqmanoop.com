@@ -84,6 +84,7 @@ export default function Apps({ loaderData }: Route.ComponentProps) {
 						tags={app.tags}
 						image={app.assets.icon}
 						isNew={app.isNew}
+						isPaid={app.isPaid}
 					/>
 				))}
 			</div>
