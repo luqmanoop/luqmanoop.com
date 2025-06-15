@@ -8,6 +8,9 @@ import {
 import { glob } from "glob";
 
 const pages = await glob("pages/*.mdx", {
+	ignore: {
+		ignored: (page) => /(about|uses)\.mdx/.test(page.name), // temporary ignore about and uses pages
+	},
 	cwd: import.meta.dirname,
 });
 

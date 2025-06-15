@@ -35,8 +35,8 @@ const Link = ({
 const pagesLinks = [
 	{ to: "/apps", label: "Apps" },
 	{ to: "/blog", label: "Blog" },
-	{ to: "/uses", label: "Uses" },
-	{ to: "/about", label: "About" },
+	// { to: "/uses", label: "Uses" },
+	// { to: "/about", label: "About" },
 ];
 
 export const NavBar = () => {
