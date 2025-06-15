@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { NavLink } from "react-router";
+import { annotate } from "rough-notation";
 import { SITE_URL, getMetadata } from "~/utils";
 import type { Route } from "./+types/home";
 
@@ -16,6 +19,17 @@ export function meta({ data }: Route.MetaArgs) {
 }
 
 export default function HomePage() {
+	useEffect(() => {
+		const viewApps = document.getElementById("view-apps");
+
+		if (!viewApps) return;
+
+		annotate(viewApps, {
+			type: "highlight",
+			color: "#ff6900",
+		}).show();
+	}, []);
+
 	return (
 		<main className="flex flex-col flex-2/3 justify-center items-center">
 			<div className="flex flex-col items-center text-center space-y-2 py-3 max-w-4xl -mt-48">
@@ -59,6 +73,16 @@ export default function HomePage() {
 					>
 						YouTube
 					</a>
+				</div>
+
+				<div className="mt-4 md:hidden">
+					<NavLink
+						id="view-apps"
+						to="/apps"
+						className="inline-block px-2 font-bold text-gray-900"
+					>
+						View Apps
+					</NavLink>
 				</div>
 			</div>
 		</main>
